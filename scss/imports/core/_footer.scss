@@ -1,0 +1,40 @@
+// css footer
+.footer{
+    background: #050505;
+    padding: 25px 0;
+    position: relative;
+
+    .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+    &__logo{
+        position: absolute;
+        left: 50%;
+        @include transform(translateX(-50%));
+        
+    }
+    &__copyright,&__back{
+        @include text(12px,pnr,21px,#b0b0b0,null);
+        letter-spacing: 0.8px;
+    }
+    &__back{
+        cursor: pointer;
+    }
+    // mobile
+    @include xs{
+        .container{
+            flex-direction: column;
+            .footer__logo{
+                margin: 10px auto;
+                position: initial;
+                left: initial;
+                @include transform(translateX(0));
+            }
+        }
+    }
+
+ 
+}

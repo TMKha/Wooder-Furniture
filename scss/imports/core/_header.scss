@@ -1,0 +1,231 @@
+// css header
+header{
+    --height-Header:80px;
+    z-index: 300;
+    position: fixed;
+    height: var(--height-Header);
+    width: 100%;
+    top: 0;
+    left: 0;
+    .container-fluid{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        .menu{
+            display: flex;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            &-item{
+                height: 100%;
+                a{
+                 @include mid(true);
+                    height: 100%;
+                    @include text(1.5rem,pnb,22.5px,$white-cl,uppercase);
+                    letter-spacing: 0.4px;
+                    padding: 0 36px;
+                    -webkit-transition: $t;
+                    &:hover{
+                    -webkit-transition: $t;
+                        color: $yellow-cl;
+                    }
+                    &.active{
+                        border-bottom: 4px solid $white-cl;
+                    }
+                }
+               
+            }
+        }   
+        .lang{
+
+            &.--active{
+                .lang__select{
+                    opacity: 1;
+                    visibility: visible;
+                }
+                .lang__current{
+                    img{
+                        transform: rotate(180deg)
+                    }
+                }
+
+            }  
+
+            @include mid(true);
+            position: relative;
+            cursor: pointer;
+            // &:hover{
+            //     .lang__select{
+            //         display: flex;
+            //         opacity: 0;
+            //         visibility: hidden;
+            //     }
+            // }
+            &__current{
+                cursor: pointer;
+                @include mid(true);
+                &-text{
+                   
+                 margin-right: 5px;
+                    @include text(1.6rem,pnb,normal,$white-cl,null);
+                    letter-spacing: 0.8px;
+                }
+                &-img{
+                   @include mid(true);
+                   transform: rotate(0deg)
+                    
+                }
+              
+            }
+            &__select{
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                @include mid(true);
+                flex-direction: column;
+                width: 100px;
+                height: auto;
+                padding-right: 12px;
+                background-color: $black-cl;
+                top: 50px;
+                right: 0;
+                text-align: right;
+                a{
+                    padding: 12px 0;
+                    width: 100%;
+                    @include text(1.6rem,pnb,normal,$white-cl,null);
+                    border-bottom: 1px solid $black-cl;
+                }
+                
+            }
+           
+        }
+        .btnmenu{
+            display: none;
+            cursor: pointer;
+            width: 40px;
+            height: 20px;
+            position: relative;
+            z-index: 300;
+            span{
+                width: 100%;
+                height: 2px;
+                background: #bea67c;
+                display: block;
+                position: absolute;
+                bottom: 50%;
+                @include transition(0.4s)
+            }
+            &::before{
+                content: "";
+                height: 2px;
+                background-color: #bea67c;
+                width: 100%;
+                display: block;
+            }
+            &::after{
+                content: "";
+                height: 2px;
+                background-color: #bea67c;
+                width: 100%;
+                display: block;
+                position: absolute;
+                bottom: 0;
+            }
+            &::after{
+                transform: rotate(0deg);
+                
+            }
+            &::before{
+                transform: rotate(0deg);
+            }
+            &.active{
+                &::after{
+                 transform: rotate(-45deg) translate(9px,-4px);
+                @include transition(0.4s);
+
+                }
+                span {
+
+                    opacity: 0;
+                }
+                &::before{
+                    transform: rotate(45deg) translate(9px,4px);
+                @include transition(0.4s);
+
+                }
+            }
+
+          
+        }
+        .right{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav{
+            
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 200;
+            @include transform(initial);
+            background: $black-cl;
+            opacity: 0;
+            visibility: hidden;
+            @include transition(0.4s);
+            ul{
+                @include mid(true);
+                    flex-direction: column;
+                    height: 100%;
+                li{
+                    margin: 15px auto;
+                    a{
+                        color: $white-cl;
+                        text-align: center;
+                    }
+                }
+            }
+            &.active{
+                visibility: visible;
+                opacity: 1;
+            }
+
+        }
+    }
+    // tablet
+    @include sm{
+        .container-fluid{
+            .logo{
+                img{
+                    width: 150px;
+                }
+            }
+            .menu{
+                display: none;
+            }
+            .right{
+                .btnmenu{
+                    margin-left: 30px;
+                    display: block;
+             }
+            }
+         
+        }
+    }
+    // mobile
+    @include xs{
+        --height-Header:60px;
+        .btnmenu{
+            display: block;
+        }
+    }
+}
+// scroll >200 thì thêm class header và đổi màu đen
+.header{
+    background: #000;
+}

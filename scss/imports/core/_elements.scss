@@ -1,0 +1,31 @@
+.btnmore{
+        font-size: 14px;
+        line-height: 58.33px;
+        font-family: pnb;
+        color: $black-cl;
+        letter-spacing: 3.2px;
+        position: relative;
+        @include transition($t);
+        &::after{
+            content: "";
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: $yellow-cl;
+            left: 0;
+            bottom: -4px;
+            position: absolute;
+        }
+        img{
+           margin-left: 10px;
+            position: relative;
+            @include transition($t);
+            transform:translateX(0px);
+        }
+        &:hover{
+              img{
+                @include transition($t);
+                transform:translateX(10px)
+              }
+        }
+}
